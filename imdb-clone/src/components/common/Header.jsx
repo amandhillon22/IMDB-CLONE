@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -8,6 +9,9 @@ import {
 } from "@mui/material";
 import { logoURL } from "../../constants/constant";
 import { Menu, BookmarkAdd, ExpandMore } from "@mui/icons-material";
+
+//components
+import HeaderMenu from "./HeaderMenu";
 
 const StyledToolbar = styled(Toolbar)`
   background: #121212;
@@ -44,14 +48,23 @@ const Logo = styled("img")({
 });
 
 const Header = () => {
+    const [open, setOpen] = useState(null);
+    const handleClick = (e) => {
+        setOpen(e.currentTarget);
+    }
+
+    const handleClose = () =>  {
+        setOpen(null);
+    }
   return (
     <AppBar>
       <StyledToolbar>
         <Logo src={logoURL} alt="logo" />
-        <Box>
+        <Box onClick={ handleClick }>
           <Menu />
           <Typography>Menu</Typography>
         </Box>
+        <HeaderMenu open={open} handleClose={handleClose} />
         <InputSearchField />
         <Typography>
           IMDb<Box component="span">Pro</Box>
