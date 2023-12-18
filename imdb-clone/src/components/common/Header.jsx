@@ -14,6 +14,9 @@ const StyledToolbar = styled(Toolbar)`
   min-height: 56px !important;
   padding: 0 115px !important;
   justify-content: space-between;
+  & > * {
+    padding: 0 16px;
+  }
   & > div {
     display: flex;
     align-items: center;
@@ -23,7 +26,18 @@ const StyledToolbar = styled(Toolbar)`
         font-weight: 600;
     }
   }
+  & > p {
+        font-size: 14px;
+        font-weight: 600;
+    }
 `;
+
+const InputSearchField =styled(InputBase)`
+    background: #FFFFFF;
+    width: 55%;
+    height: 30px;
+    border-radius: 5px;
+`
 
 const Logo = styled("img")({
   width: 64,
@@ -38,7 +52,7 @@ const Header = () => {
           <Menu />
           <Typography>Menu</Typography>
         </Box>
-        <InputBase />
+        <InputSearchField />
         <Typography>
           IMDb<Box component="span">Pro</Box>
         </Typography>
